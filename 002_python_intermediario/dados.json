@@ -1,0 +1,11 @@
+{
+   "nome": "Mateus Salvador",
+   "idade": 22,
+   "cidade": "Brasília",
+   "cursos": [
+      "Python",
+      "Django"
+   ],
+   "ativo": true,
+   "plano": null
+}
