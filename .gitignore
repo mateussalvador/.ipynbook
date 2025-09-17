@@ -1,0 +1,7 @@
+# Ignorando ambientes virtuais
+venv
+env
+.venv
+.env
+# Ignorando checkpoins
+.ipynb_checkpoints/
