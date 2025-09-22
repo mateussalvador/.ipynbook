@@ -11,7 +11,6 @@ Em seguida, implemente uma classe CarrinhoDeCompras, que mantém uma lista de ob
 O programa principal deve permitir que o usuário adicione e remova produtos, visualize o conteúdo do carrinho e o total da compra. Utilize encapsulamento para proteger os dados dos produtos e boas práticas de organização orientada a objetos.
 
 """
-import json
 
 class Produto():
     """Classe que permite criar objetos do tipo Produto que serão inseridos ao carrinho de compras."""
