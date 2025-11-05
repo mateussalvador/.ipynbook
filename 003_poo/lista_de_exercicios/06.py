@@ -22,9 +22,8 @@ class Departamento:
             print("Este departamento ainda não possui funcionários.")
         else:
             for funcionario in self.lista_funcionarios:
-                print(funcionario.nome)
-                print(funcionario.salario)
-                print("-" * 30)
+                print("Nome:", funcionario.nome, end = " | ")
+                print("Salário:", funcionario.salario)
         
     def adicionar_funcionarios(self, funcionario):
         self.lista_funcionarios.append(funcionario)
@@ -37,7 +36,8 @@ class Departamento:
             media = 0
             for funcionario in self.lista_funcionarios:
                 media += funcionario.salario
-            return f"A média salarial do departamento é {media}."
+            media_salarial = media/len(self.lista_funcionarios)
+            return f"A média salarial do departamento é R$ {media_salarial:.2f}."
 
 class Funcionario:
     def __init__(self, nome, salario):
@@ -85,10 +85,15 @@ def cria_departamento():
 
 def cria_funcionario():
     nome = input("Informe o nome do funcionário: ")
-    salario = input(f"Informe o salaŕio de {nome}: ")
+    while True: 
+        try:
+            salario = float(input(f"Informe o salaŕio de {nome}: "))
+            novo_funcionario = Funcionario(nome, salario)
+            return novo_funcionario
+        except ValueError:
+            print("Você deve informar um salário válido. Tente novamente.")
+            continue
 
-    novo_funcionario = Funcionario(nome, salario)
-    return novo_funcionario
 
 def verifica_existencia_departamentos(lista_departamentos):
     if not lista_departamentos:
@@ -162,14 +167,25 @@ while True:
                 num_departamento = lista_e_seleciona_departamento(lista_departamentos)
                 num_funcionario = lista_e_seleciona_funcionarios(lista_funcionarios)
                 lista_departamentos[num_departamento].adicionar_funcionarios(lista_funcionarios[num_funcionario])
+                continue
             else:
                 continue
 
         case 4:
-            ...
+            if verifica_existencia_departamentos(lista_departamentos) and verifica_existencia_funcionarios(lista_funcionarios):
+                num_departamento = lista_e_seleciona_departamento(lista_departamentos)
+                lista_departamentos[num_departamento].listar_funcionarios()
+            else:
+                continue
+
     
         case 5:
-            ...
+            if verifica_existencia_departamentos(lista_departamentos) and verifica_existencia_funcionarios(lista_funcionarios):
+                num_departamento = lista_e_seleciona_departamento(lista_departamentos)
+                print(lista_departamentos[num_departamento].mostrar_media_salarial())
+            else:
+                continue
     
         case 6:
-            ...
+            print("Saindo...")
+            break
